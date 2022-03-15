@@ -68,7 +68,7 @@ function Game() {
   return (
     <PageWrapper>
       <Header>
-        <Title>QUAL É O NÚMERO?</Title>
+        <Title data-testid="title">QUAL É O NÚMERO?</Title>
         <Line />
       </Header>
 
@@ -88,6 +88,7 @@ function Game() {
           status={!Match}
           icon={true}
           variant={'grey'}
+          dataTestid="button-newmatch"
         />
       </DisplayWrapper>
 
@@ -106,7 +107,7 @@ function Game() {
           status={true}
           icon={true}
           variant={'orange'}
-          data-testid="button-submit"
+          dataTestid="button-submit"
         />
       </FormWrapper>
     </PageWrapper>

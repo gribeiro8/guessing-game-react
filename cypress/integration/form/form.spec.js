@@ -2,35 +2,16 @@
 
 describe('example to-do app', () => {
   beforeEach(() => {
-    cy.visit('https://example.cypress.io/todo');
+    cy.visit('localhost:3000');
   });
 
-  it('displays two todo items by default', () => {
-    cy.get('.todo-list li').should('have.length', 2);
-
-    cy.get('.todo-list li').first().should('have.text', 'Pay electric bill');
-    cy.get('.todo-list li').last().should('have.text', 'Walk the dog');
+  it('check titles', () => {
+    cy.get('[data-testid=title]').should('have.text', 'QUAL É O NÚMERO?');
+    cy.get('[data-testid="button-submit"]').should('have.text', 'Enviar');
   });
 
-  it('can add new todo items', () => {
-    const newItem = 'Feed the cat';
-
-    cy.get('[data-test=new-todo]').type(`${newItem}{enter}`);
-
-    cy.get('.todo-list li')
-      .should('have.length', 3)
-      .last()
-      .should('have.text', newItem);
-  });
-
-  it('can check off an item as completed', () => {
-    cy.contains('Pay electric bill')
-      .parent()
-      .find('input[type=checkbox]')
-      .check();
-
-    cy.contains('Pay electric bill')
-      .parents('li')
-      .should('have.class', 'completed');
+  it('send value', () => {
+    cy.get('[data-testid=input-number]').type('123');
+    cy.get('[data-testid="button-submit"]').click();
   });
 });
